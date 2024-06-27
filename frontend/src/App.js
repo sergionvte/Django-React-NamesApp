@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-function App() {
+const App = () => {
+  const [name, setName] = useState('');
+  const [names, setNames] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/names/')
+      .then(response => setNames(response.data))
+      .catch(error => console.error(error));
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:8000/api/names/', { name })
+      .then(response => {
+        setNames([...names, response.data]);
+        setName('');
+      })
+      .catch(error => console.error(error));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Welcome</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Enter your name"
+        />
+        <button type="submit">Submit</button>
+      </form>
+      <ul>
+        {names.map((nameObj) => (
+          <li key={nameObj.id}>{nameObj.name}</li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
 export default App;

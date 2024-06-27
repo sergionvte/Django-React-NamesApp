@@ -2,8 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Name(models.Model):
-  class Name(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, default='John Doe')
 
     def __str__(self):
       return self.name
