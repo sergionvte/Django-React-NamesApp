@@ -94,5 +94,6 @@ This is a sample project that combines Django and React to create a web applicat
 │   ├── package.json
 │   └── ...
 ├── .gitignore
+├── requirements.txt
 └── README.md
 ```
