@@ -1,4 +1,4 @@
-# Name App
+# Names App
 
 This is a sample project that combines Django and React to create a web application that allows users to add names to a database and display them in a list. The application uses Django for the backend and React for the frontend, along with Bootstrap for styling.
 
@@ -68,7 +68,7 @@ This is a sample project that combines Django and React to create a web applicat
 ## Project Structure
 
 ```plaintext
-<Repository Name>
+Django-React-NamesApp
 ├── backend
 │   ├── backend
 │   │   ├── __init__.py
